@@ -1,24 +1,28 @@
+from config import *
 from logger import *
 
 
+def create_menu_list():
+  return '\n'.join([f'{bcolors.OKGREEN}{nn}.{bcolors.ENDC} {el}' for nn, el in enumerate(main_menu, 1)])
+
+
 def interface():
-  with open('phonebook.txt', 'a', encoding='utf-8'):
+  with open(config.DATA_FILE, 'a', encoding='utf-8'):
     pass
 
   command = '-1'
 
-  while command != '4':
-    print('Возможные варианты взаимодействия:\n' +
-          bcolors.OKGREEN + '1. ' + bcolors.ENDC + 'Добавить контакт ➕ \n' +
-          bcolors.OKGREEN + '2. ' + bcolors.ENDC + 'Вывести на экран 📋 \n' +
-          bcolors.OKGREEN + '3. ' + bcolors.ENDC + 'Поиск контакта 🔎 \n' +
-          bcolors.OKGREEN + '4. ' + bcolors.ENDC + 'Выход из программы 🚪 \n'
+  while command != '5':
+    print('\n> Возможные варианты взаимодействия:\n' +
+          create_menu_list() +
+          '\n'
           )
 
     command = input('Введите номер действия: ')
 
-    while command.strip() not in ('1', '2', '3', '4'):
-      print(bcolors.FAIL + 'Некорректные данные, нужно ввести число (1-4) ', bcolors.ENDC)
+    while command.strip() not in str(tuple(range(1, len(main_menu) + 1))):
+      show_error(
+          f'Некорректные данные, нужно ввести число (1-{len(main_menu)})')
       command = input('Введите номер действия: ')
 
     match command:
@@ -29,4 +33,6 @@ def interface():
       case '3':
         search_contact()
       case '4':
+        transfer_contact()
+      case '5':
         print(bcolors.OKGREEN + 'Good Luck!'+bcolors.ENDC, '👍')
