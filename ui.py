@@ -13,10 +13,7 @@ def interface():
   command = '-1'
 
   while command != '5':
-    print('\n> Возможные варианты взаимодействия:\n' +
-          create_menu_list() +
-          '\n'
-          )
+    print(f'\n{bcolors.BOLD}> Возможные варианты взаимодействия:{bcolors.ENDC}\n{create_menu_list()}\n')
 
     command = input('Введите номер действия: ')
 

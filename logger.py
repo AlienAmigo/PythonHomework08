@@ -48,7 +48,7 @@ def transfer_contact():
   show_info()
   with open(config.DATA_FILE, 'r', encoding='utf-8') as file:
     contacts_list = file.read().strip().split('\n\n')
-    transfer_index = int(input('Введите индекс контакта для перемещения: '))
+    transfer_index = int(input('\nВведите индекс контакта для перемещения: '))
 
     if transfer_index in tuple(range(1, len(contacts_list) + 1)):
       target_file = input('Введите имя файла для перемещения контакта: ')

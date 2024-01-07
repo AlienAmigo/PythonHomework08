@@ -32,7 +32,7 @@ search_menu = [
 
 
 def show_title(title: str):
-  print(f'\n{bcolors.WARNING}{title}{bcolors.ENDC}')
+  print(f'\n{bcolors.WARNING}{bcolors.BOLD}{title}{bcolors.ENDC}')
 
 
 def show_error(text: str):
